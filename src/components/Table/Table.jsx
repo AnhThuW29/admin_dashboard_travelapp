@@ -14,9 +14,9 @@ function createData(trackingId, name, customer, date, amount, status) {
 }
 
 const rows = [
-  createData(18908424, "Tour Bà Nà hill 1 ngày", 'Anh Thư' , "2 November 2022", 2, "Chờ xác nhận"),
-  createData(18908424, "Tour Huế 3 ngày 2 đêm ", 'Anh Thư' , "2 November 2022", 2, "Đã xác nhận"),
-  createData(18908424, "2 vé phòng đôi Sheraton hotel", 'Anh Thư' , "25 October 2022", 2, "Hoàn thành"),
+  createData(18908464, "Tour Bà Nà hill 1 ngày", 'Anh Thư' , "2 November 2022", 2, "Chờ xác nhận"),
+  createData(18908434, "Tour Huế 3 ngày 2 đêm ", 'Anh Thư' , "2 November 2022", 2, "Đã xác nhận"),
+  createData(18908414, "2 vé phòng đôi Sheraton hotel", 'Anh Thư' , "25 October 2022", 2, "Hoàn thành"),
   createData(18908421, "1 vé phòng đơn Iris hotel", 'Anh Thư' , "20 October 2022", 2, "Hoàn thành"),
 ];
 
