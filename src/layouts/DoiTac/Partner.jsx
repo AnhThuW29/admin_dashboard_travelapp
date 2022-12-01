@@ -1,21 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../../components/sidebar/SideBar.jsx";
 import MainDash from "../../components/MainDash/MainDash.jsx";
 import RightSide from "../../components/RightSide/RightSide.jsx";
-import Table from "../../components/Table/Table";
-import "./Revenue.css";
+import DataTable2 from "../../components/DataTable/DataTable2.jsx";
+import "./Partner.css";
+import axiosClient from "Data/client.js";
 
-const Revenue = () => {
+const Partner = () => {
     return (
         <div className="App">
             <div className="AppBackground">
                 <SideBar />
-                <div>
-                    <h2>Doanh thu chi tiết</h2>
-                    <div className="container">
-                        <Table />
-                        <Table />
-                    </div>
+                <div className="partner" style={{ margin: "3rem" }}>
+                    <h3>Đối tác</h3>
+                    <DataTable2 />
                 </div>
                 <RightSide />
             </div>
@@ -23,4 +21,4 @@ const Revenue = () => {
     );
 };
 
-export default Revenue;
+export default Partner;

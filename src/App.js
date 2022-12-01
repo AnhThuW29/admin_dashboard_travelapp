@@ -15,6 +15,7 @@ import Hotel from "./layouts/Hotel/Hotel.jsx";
 import Revenue from "./layouts/Revenue/Revenue.jsx";
 import Post from "./layouts/Post/Post.jsx";
 import { DarkModeContext } from "context/darkModeContext";
+import Partner from "layouts/DoiTac/Partner.jsx";
 
 function App() {
     // const [darkMode] = useContext(DarkModeContext)
@@ -28,6 +29,10 @@ function App() {
                     <Route path="client">
                         <Route index element={<Client />} />
                         <Route path=":clientID" element={<Single />} />
+                    </Route>
+                    <Route path="partner">
+                        <Route index element={<Partner />} />
+                        <Route path=":partnerID" element={<Single />} />
                     </Route>
                     <Route path="tour">
                         <Route index element={<Tour />} />

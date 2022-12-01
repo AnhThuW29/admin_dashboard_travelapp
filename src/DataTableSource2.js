@@ -2,7 +2,7 @@ export const userColumns = [
     // { field: "_id", headerName: "ID", width: 100 },
     {
         field: "HoTen",
-        headerName: "Đối tác",
+        headerName: "Khách hàng",
         width: 200,
         renderCell: (params) => {
             return (
@@ -36,7 +36,7 @@ export const userColumns = [
     {
         field: "DiaChi",
         headerName: "Địa chỉ",
-        width: 200,
+        width: 130,
     },
     {
         field: "CMND",

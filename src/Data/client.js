@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Cấu hình chung cho axios
 const axiosClient = axios.create({
-    baseURL: "http://192.168.88.107:8000/",
+    baseURL: "http://192.168.88.109:9000/",
     headers: {
         "content-type": "application/json",
     },

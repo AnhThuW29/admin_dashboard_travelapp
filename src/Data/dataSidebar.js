@@ -1,4 +1,10 @@
-import { UilEstate, UilUsersAlt, UilUmbrella, UilHouseUser, UilWallet  } from '@iconscout/react-unicons'
+import {
+    UilEstate,
+    UilUsersAlt,
+    UilUmbrella,
+    UilHouseUser,
+    UilWallet,
+} from "@iconscout/react-unicons";
 
 // Recent Card Imports
 import img1 from "../imgs/img1.png";
@@ -7,35 +13,40 @@ import img3 from "../imgs/img3.png";
 
 export const dataSidebar = [
     {
-        route:'/',
+        route: "/",
         icon: UilEstate,
-        heading: 'Tổng quan',
+        heading: "Tổng quan",
     },
     {
-        route:'/client',
+        route: "/client",
         icon: UilUsersAlt,
-        heading: 'Khách hàng',
+        heading: "Khách hàng",
     },
     {
-        route:'/tour',
+        route: "/partner",
+        icon: UilUsersAlt,
+        heading: "Đối tác",
+    },
+    {
+        route: "/tour",
         icon: UilUmbrella,
-        heading: 'Tour',
+        heading: "Tour",
     },
     {
-        route:'/hotel',
+        route: "/hotel",
         icon: UilHouseUser,
-        heading: 'Khách sạn',
+        heading: "Khách sạn",
     },
     {
-        route:'/revenue',
+        route: "/revenue",
         icon: UilWallet,
-        heading: 'Doanh thu',
+        heading: "Doanh thu",
     },
-]
+];
 
 export const dataCard = [
     {
-        title: 'Khách hàng',
+        title: "Khách hàng",
         color: {
             backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
             boxShadow: "0px 10px 20px 0px #e0c6f5",
@@ -45,13 +56,29 @@ export const dataCard = [
         png: UilUsersAlt,
         series: [
             {
-                name: 'Khách hàng',
-                data: [20, 40, 60, 80, 100]
-            }
-        ]
+                name: "Khách hàng",
+                data: [20, 40, 60, 80, 100],
+            },
+        ],
     },
     {
-        title: 'Tour hot nhất',
+        title: "Đối tác",
+        color: {
+            backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
+            boxShadow: "0px 10px 20px 0px #e0c6f5",
+        },
+        barValue: 70,
+        value: 20,
+        png: UilUsersAlt,
+        series: [
+            {
+                name: "Đối tác",
+                data: [20, 40, 60, 80, 100],
+            },
+        ],
+    },
+    {
+        title: "Tour hot nhất",
         color: {
             backGround: "linear-gradient(180deg, #FF919D 0%, #FC929D 100%)",
             boxShadow: "0px 10px 20px 0px #FDC0C7",
@@ -61,15 +88,16 @@ export const dataCard = [
         png: UilUmbrella,
         series: [
             {
-                name: 'Tour hot nhất',
-                data: [20, 40, 60, 80, 100]
-            }
-        ]
+                name: "Tour hot nhất",
+                data: [20, 40, 60, 80, 100],
+            },
+        ],
     },
     {
-        title: 'Khách sạn hot nhất',
+        title: "Khách sạn hot nhất",
         color: {
-            backGround: "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
+            backGround:
+                "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
             boxShadow: "0px 10px 20px 0px #F9D59B",
         },
         barValue: 70,
@@ -77,33 +105,31 @@ export const dataCard = [
         png: UilUsersAlt,
         series: [
             {
-                name: 'Khách sạn hot nhất',
-                data: [20, 40, 60, 80, 100]
-            }
-        ]
+                name: "Khách sạn hot nhất",
+                data: [20, 40, 60, 80, 100],
+            },
+        ],
     },
-]
-
-
+];
 
 // Recent Update Card Data
 export const UpdatesData = [
     {
-      img: img1,
-      name: "Andrew Thomas",
-      noti: "has ordered Apple smart watch 2500mh battery.",
-      time: "25 seconds ago",
+        img: img1,
+        name: "Andrew Thomas",
+        noti: "has ordered Apple smart watch 2500mh battery.",
+        time: "25 seconds ago",
     },
     {
-      img: img2,
-      name: "James Bond",
-      noti: "has received Samsung gadget for charging battery.",
-      time: "30 minutes ago",
+        img: img2,
+        name: "James Bond",
+        noti: "has received Samsung gadget for charging battery.",
+        time: "30 minutes ago",
     },
     {
-      img: img3,
-      name: "Iron Man",
-      noti: "has ordered Apple smart watch, samsung Gear 2500mh battery.",
-      time: "2 hours ago",
+        img: img3,
+        name: "Iron Man",
+        noti: "has ordered Apple smart watch, samsung Gear 2500mh battery.",
+        time: "2 hours ago",
     },
-  ];
+];

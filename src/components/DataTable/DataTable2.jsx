@@ -1,11 +1,11 @@
 import "./DataTable.css";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../DataTableSource";
+import { userColumns } from "../../DataTableSource2";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosClient from "Data/client";
 
-const DataTable = () => {
+const DataTable2 = () => {
     // const [data, setData] = useState(userRows)
 
     const [users, setUsers] = useState([]);
@@ -13,7 +13,7 @@ const DataTable = () => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                await axiosClient.get("/v1/nguoidung/getall").then((res) => {
+                await axiosClient.get("/v1/nhanvien/getall").then((res) => {
                     setUsers(res.data);
                 });
             } catch (error) {
@@ -68,7 +68,7 @@ const DataTable = () => {
     );
 };
 
-export default DataTable;
+export default DataTable2;
 
 // import React, { useState } from 'react'
 // import { DataGrid } from '@mui/x-data-grid';
