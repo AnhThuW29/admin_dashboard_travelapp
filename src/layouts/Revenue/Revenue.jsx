@@ -11,7 +11,15 @@ const Revenue = () => {
             <div className="AppBackground">
                 <SideBar />
                 <div>
-                    <h2>Doanh thu chi tiết</h2>
+                    <h2
+                        style={{
+                            marginTop: "1rem",
+                            fontWeight: "bold",
+                            fontSize: "20px",
+                        }}
+                    >
+                        Doanh thu chi tiết
+                    </h2>
                     <div className="container">
                         <Table />
                         <Table />

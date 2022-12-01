@@ -12,7 +12,15 @@ const Partner = () => {
             <div className="AppBackground">
                 <SideBar />
                 <div className="partner" style={{ margin: "3rem" }}>
-                    <h3>Đối tác</h3>
+                    <h3
+                        style={{
+                            marginTop: "1rem",
+                            fontWeight: "bold",
+                            fontSize: "20px",
+                        }}
+                    >
+                        Đối tác
+                    </h3>
                     <DataTable2 />
                 </div>
                 <RightSide />
