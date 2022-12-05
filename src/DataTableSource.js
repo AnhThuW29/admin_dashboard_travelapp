@@ -18,11 +18,11 @@ export const userColumns = [
         headerName: "Ngày Sinh",
         width: 130,
     },
-    {
-        field: "GioiTinh",
-        headerName: "Giới tính",
-        width: 130,
-    },
+    // {
+    //     field: "GioiTinh",
+    //     headerName: "Giới tính",
+    //     width: 130,
+    // },
     {
         field: "Email",
         headerName: "Email",
@@ -33,16 +33,16 @@ export const userColumns = [
         headerName: "Số điện thoại",
         width: 130,
     },
-    {
-        field: "DiaChi",
-        headerName: "Địa chỉ",
-        width: 200,
-    },
-    {
-        field: "CMND",
-        headerName: "CMND",
-        width: 150,
-    },
+    // {
+    //     field: "DiaChi",
+    //     headerName: "Địa chỉ",
+    //     width: 200,
+    // },
+    // {
+    //     field: "CMND",
+    //     headerName: "CMND",
+    //     width: 150,
+    // },
 
     // {
     //   field: "status",

@@ -33,11 +33,6 @@ export const dataSidebar = [
         heading: "Tour",
     },
     {
-        route: "/hotel",
-        icon: UilHouseUser,
-        heading: "Khách sạn",
-    },
-    {
         route: "/revenue",
         icon: UilWallet,
         heading: "Doanh thu",
@@ -89,23 +84,6 @@ export const dataCard = [
         series: [
             {
                 name: "Tour hot nhất",
-                data: [20, 40, 60, 80, 100],
-            },
-        ],
-    },
-    {
-        title: "Khách sạn hot nhất",
-        color: {
-            backGround:
-                "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
-            boxShadow: "0px 10px 20px 0px #F9D59B",
-        },
-        barValue: 70,
-        value: 20,
-        png: UilUsersAlt,
-        series: [
-            {
-                name: "Khách sạn hot nhất",
                 data: [20, 40, 60, 80, 100],
             },
         ],

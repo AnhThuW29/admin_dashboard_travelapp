@@ -13,7 +13,7 @@ const DataTable2 = () => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                await axiosClient.get("/v1/nhanvien/getall").then((res) => {
+                await axiosClient.get("/v1/nguoidung/getallban").then((res) => {
                     setUsers(res.data);
                 });
             } catch (error) {

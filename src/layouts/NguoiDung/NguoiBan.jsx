@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import "./Single.css";
+import "./NguoiMua.css";
 import SideBar from "../../components/sidebar/SideBar.jsx";
 // import Navbar from "../../components/navbar/Navbar";
 import CustomerReview from "../../components/CustomerReview/CustomerReview";
@@ -11,22 +11,24 @@ import axiosClient from "Data/client";
 import { useEffect, useState } from "react";
 import RightSide from "components/RightSide/RightSide";
 
-const Single = () => {
+const NguoiBan = () => {
     let id = useParams();
     const [data, setData] = useState([]);
 
     useEffect(() => {
         const getUser = async (id) => {
             try {
-                await axiosClient.get(`/user/getID/${id}`).then((res) => {
-                    setData(res.data);
-                    console.log(res.data);
-                });
+                await axiosClient
+                    .get(`/v1/nguoidung/getuser/${id}`)
+                    .then((res) => {
+                        setData(res.data);
+                        // console.log(res.data);
+                    });
             } catch (error) {
                 console.log("LOI", error);
             }
         };
-        getUser(id.clientID);
+        getUser(id.partnerID);
     }, []);
 
     return (
@@ -38,7 +40,7 @@ const Single = () => {
                         <div className="top">
                             <div className="left">
                                 <div className="editButton">Edit</div>
-                                <h1 className="title">Information</h1>
+                                <h1 className="title">Thông tin</h1>
 
                                 <div className="item">
                                     <img
@@ -50,34 +52,69 @@ const Single = () => {
                                         <h1 className="itemTitle"></h1>
                                         <div className="detailItem">
                                             <span className="itemKey">
+                                                Họ và tên:
+                                            </span>
+                                            <span className="itemValue">
+                                                {data?.HoTen}
+                                            </span>
+                                        </div>
+
+                                        <div className="detailItem">
+                                            <span className="itemKey">
+                                                Ngày sinh:
+                                            </span>
+                                            <span className="itemValue">
+                                                {data?.NgaySinh}
+                                            </span>
+                                        </div>
+                                        <div className="detailItem">
+                                            <span className="itemKey">
+                                                Giới tính:
+                                            </span>
+                                            <span className="itemValue">
+                                                {data?.GioiTinh}
+                                            </span>
+                                        </div>
+                                        <div className="detailItem">
+                                            <span className="itemKey">
                                                 Email:
                                             </span>
                                             <span className="itemValue">
-                                                {data?.email}
+                                                {data?.Email}
                                             </span>
                                         </div>
                                         <div className="detailItem">
                                             <span className="itemKey">
-                                                Phone:
+                                                Số điện thoại:
                                             </span>
                                             <span className="itemValue">
-                                                {data?.phone}
+                                                {data?.SDT}
                                             </span>
                                         </div>
                                         <div className="detailItem">
                                             <span className="itemKey">
-                                                Address:
+                                                CMND/CCCD:
                                             </span>
                                             <span className="itemValue">
-                                                Elton St. 234 Garden Yd. NewYork
+                                                {data?.CMND}
                                             </span>
                                         </div>
                                         <div className="detailItem">
                                             <span className="itemKey">
-                                                Country:
+                                                Tên địa chỉ:
                                             </span>
                                             <span className="itemValue">
-                                                USA
+                                                {data.DiaChi.length > 0 &&
+                                                    data?.DiaChi[0].TenDiaChi}
+                                            </span>
+                                        </div>
+                                        <div className="detailItem">
+                                            <span className="itemKey">
+                                                Địa chỉ:
+                                            </span>
+                                            <span className="itemValue">
+                                                {data.DiaChi.length > 0 &&
+                                                    data?.DiaChi[0].ChiTiet}
                                             </span>
                                         </div>
                                     </div>
@@ -88,10 +125,10 @@ const Single = () => {
                                 
                             </div> */}
                         </div>
-                        <div className="bottom">
+                        {/* <div className="bottom">
                             <h1 className="title">Last Transactions</h1>
                             <List />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <RightSide />
@@ -100,4 +137,4 @@ const Single = () => {
     );
 };
 
-export default Single;
+export default NguoiBan;

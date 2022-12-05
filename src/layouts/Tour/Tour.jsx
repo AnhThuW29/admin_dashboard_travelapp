@@ -15,9 +15,11 @@ import axiosClient from "Data/client";
 
 import "./Tour.css";
 import SideBar from "../../components/sidebar/SideBar.jsx";
-import RightSide from "../../components/RightSide/RightSide.jsx";
+// import RightSide from "../../components/RightSide/RightSide.jsx";
 import PostCard from "../../components/PostCard/PostCard.jsx";
 import image from "../../imgs/Bear.jpg";
+import { Link } from "react-router-dom";
+import { URL_IMAGES } from "../../Data/URLgetData";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fcd2ce",
@@ -82,28 +84,39 @@ const Tour = () => {
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none ">
                             <h2 className="text-2xl font-bold text-gray-900">
-                                Collections
+                                Tour
                             </h2>
                             <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
                                 {data.map((item, index) => (
-                                    <div key={index} className="group relative">
-                                        <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                                            <img
-                                                src={image}
-                                                className="h-full w-full object-cover object-center"
-                                            />
+                                    <Link
+                                        to={"/tour/" + item._id}
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <div
+                                            key={index}
+                                            className="group relative"
+                                        >
+                                            <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                                                <img
+                                                    src={
+                                                        URL_IMAGES +
+                                                        item.HinhAnh
+                                                    }
+                                                    className="h-full w-full object-cover object-center"
+                                                />
+                                            </div>
+                                            <h3 className="mt-6 text-sm text-gray-500">
+                                                <span className="absolute inset-0" />
+                                                {item.TieuDe}
+                                            </h3>
+                                            <p className="text-base font-semibold text-gray-900 pMoTa">
+                                                {item.MoTa}
+                                            </p>
                                         </div>
-                                        <h3 className="mt-6 text-sm text-gray-500">
-                                            <span className="absolute inset-0" />
-                                            {item.TieuDe}
-                                        </h3>
-                                        <p className="text-base font-semibold text-gray-900">
-                                            {item.MoTa}
-                                        </p>
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
-                            <div className="flex items-center justify-between border border-gray-500 px-4 py-3 sm:px-6 mt-3">
+                            <div className="flex items-center justify-between border border-gray-500 rounded-lg px-4 py-2 sm:px-6 mt-3">
                                 <div className="flex flex-1 justify-between sm:hidden">
                                     <a
                                         href="#"
@@ -213,7 +226,7 @@ const Tour = () => {
                         </div>
                     </div>
                 </div>
-                <RightSide />
+                {/* <RightSide /> */}
             </div>
         </div>
     );
