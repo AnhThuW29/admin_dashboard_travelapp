@@ -18,6 +18,11 @@ export const dataSidebar = [
         heading: "Tổng quan",
     },
     {
+        route: "/nhanvien",
+        icon: UilUsersAlt,
+        heading: "Nhân viên",
+    },
+    {
         route: "/client",
         icon: UilUsersAlt,
         heading: "Khách hàng",

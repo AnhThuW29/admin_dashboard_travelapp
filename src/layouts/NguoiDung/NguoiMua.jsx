@@ -2,13 +2,12 @@ import { useParams } from "react-router-dom";
 
 import "./NguoiMua.css";
 import SideBar from "../../components/sidebar/SideBar.jsx";
-import CustomerReview from "../../components/CustomerReview/CustomerReview";
-import List from "../../components/Table/Table.jsx";
-import Card from "../../components/Card/Card.jsx";
-import { dataSidebar } from "Data/dataSidebar";
+// import CustomerReview from "../../components/CustomerReview/CustomerReview";
+// import List from "../../components/Table/Table.jsx";
+// import Card from "../../components/Card/Card.jsx";
+// import { dataSidebar } from "Data/dataSidebar";
 import axiosClient from "Data/client";
 import { useEffect, useState } from "react";
-import RightSide from "components/RightSide/RightSide";
 
 const NguoiMua = () => {
     let id = useParams();
@@ -130,7 +129,6 @@ const NguoiMua = () => {
                         </div> */}
                     </div>
                 </div>
-                <RightSide />
             </div>
         </div>
     );

@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Cấu hình chung cho axios
 const axiosClient = axios.create({
-    baseURL: "http://10.10.41.95:9000/",
+    baseURL: "http://localhost:9000/",
     headers: {
         "content-type": "application/json",
     },
