@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
@@ -15,18 +7,16 @@ import axiosClient from "Data/client";
 
 import "./Tour.css";
 import SideBar from "../../components/sidebar/SideBar.jsx";
-import PostCard from "../../components/PostCard/PostCard.jsx";
-import image from "../../imgs/Bear.jpg";
 import { Link } from "react-router-dom";
 import { URL_IMAGES } from "../../Data/URLgetData";
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fcd2ce",
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fcd2ce",
+//     ...theme.typography.body2,
+//     padding: theme.spacing(2),
+//     textAlign: "center",
+//     color: theme.palette.text.secondary,
+// }));
 
 const Tour = () => {
     const [data, setData] = useState([]);

@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SideBar from "../../components/sidebar/SideBar.jsx";
-import MainDash from "../../components/MainDash/MainDash.jsx";
-import RightSide from "../../components/RightSide/RightSide.jsx";
 import DataTable2 from "../../components/DataTable/DataTable2.jsx";
 import "./Partner.css";
-import axiosClient from "Data/client.js";
 
 const Partner = () => {
     return (
@@ -23,7 +20,6 @@ const Partner = () => {
                     </h3>
                     <DataTable2 />
                 </div>
-                <RightSide />
             </div>
         </div>
     );

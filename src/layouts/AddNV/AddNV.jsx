@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SideBar from "../../components/sidebar/SideBar.jsx";
-import MainDash from "../../components/MainDash/MainDash.jsx";
-import RightSide from "../../components/RightSide/RightSide.jsx";
 import {
     SelectProvince,
     SelectDistrict,

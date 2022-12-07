@@ -19,6 +19,8 @@ import Partner from "layouts/DoiTac/Partner.jsx";
 import Test from "./test";
 import useToken from "./useToken";
 import AddNV from "layouts/AddNV/AddNV";
+import NhanVien from "layouts/NhanVien/NhanVien";
+import SingleNV from "layouts/NhanVien/SingleNV";
 
 function App() {
     const [token, setToken] = useState("");
@@ -37,7 +39,11 @@ function App() {
             <Routes>
                 <Route path="/" element={<Outlet />}>
                     <Route index element={<Home />} />
-                    <Route path="nhanvien" element={<AddNV />} />
+                    <Route path="nhanvien">
+                        <Route index element={<NhanVien />} />
+                        <Route path="addNV" element={<AddNV />} />
+                        <Route path=":nhanvienID" element={<SingleNV />} />
+                    </Route>
                     <Route path="client">
                         <Route index element={<Client />} />
                         <Route path=":clientID" element={<NguoiMua />} />

@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SideBar from "../../components/sidebar/SideBar.jsx";
-import MainDash from "../../components/MainDash/MainDash.jsx";
 import RightSide from "../../components/RightSide/RightSide.jsx";
 import DataTable from "../../components/DataTable/DataTable.jsx";
 import "./Client.css";
-import axiosClient from "Data/client.js";
 
 const Client = () => {
     return (

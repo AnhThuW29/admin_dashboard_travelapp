@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import image from "../src/imgs/orangeLogo.png";
-import PropTypes from "prop-types";
 import axios from "axios";
-import axiosClient from "Data/client";
-import jwt_decode from "jwt-decode";
-export default function Test(props) {
-    // const login = async () => {
-    //     const user = {
-    //         Email: email,
-    //         MatKhau: password,
-    //     };
-    //     return await axios
-    //         .post("http://localhost:9000/v1/nguoidung/dangnhap", user)
-    //         .then((res) => {});
-    // };
 
+export default function Test(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 

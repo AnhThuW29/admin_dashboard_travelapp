@@ -1,29 +1,28 @@
 import { useParams } from "react-router-dom";
 
-import "./NguoiMua.css";
+import "./SingleNV.css";
 import SideBar from "../../components/sidebar/SideBar.jsx";
 import axiosClient from "Data/client";
 import { useEffect, useState } from "react";
-import RightSide from "components/RightSide/RightSide";
 
-const NguoiBan = () => {
+const SingleNV = () => {
     let id = useParams();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({ DiaChi: [] });
 
     useEffect(() => {
         const getUser = async (id) => {
             try {
                 await axiosClient
-                    .get(`/v1/nguoidung/getuser/${id}`)
+                    .get(`/v1/nhanvien/getuser/${id}`)
                     .then((res) => {
+                        console.log(res.data);
                         setData(res.data);
-                        // console.log(res.data);
                     });
             } catch (error) {
                 console.log("LOI", error);
             }
         };
-        getUser(id.partnerID);
+        getUser(id.nhanvienID);
     }, []);
 
     return (
@@ -34,15 +33,14 @@ const NguoiBan = () => {
                     <div className="singleContainer">
                         <div className="top">
                             <div className="left">
-                                <div className="editButton">Edit</div>
-                                <h1 className="title">Thông tin</h1>
+                                <h1 className="title">Thông tin chi tiết</h1>
 
                                 <div className="item">
-                                    <img
+                                    {/* <img
                                         src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
                                         alt=""
                                         className="itemImg"
-                                    />
+                                    /> */}
                                     <div className="details">
                                         <h1 className="itemTitle"></h1>
                                         <div className="detailItem">
@@ -115,21 +113,12 @@ const NguoiBan = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className="right">
-                                <CustomerReview />
-                                
-                            </div> */}
                         </div>
-                        {/* <div className="bottom">
-                            <h1 className="title">Last Transactions</h1>
-                            <List />
-                        </div> */}
                     </div>
                 </div>
-                <RightSide />
             </div>
         </div>
     );
 };
 
-export default NguoiBan;
+export default SingleNV;

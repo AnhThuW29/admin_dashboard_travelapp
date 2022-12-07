@@ -3,8 +3,6 @@ import SideBar from "../../components/sidebar/SideBar.jsx";
 import "./Post.css";
 import axiosClient from "../../Data/client";
 
-// import { StarIcon } from "@heroicons/react/20/solid";
-// import { RadioGroup } from "@headlessui/react";
 import { useParams } from "react-router-dom";
 import { URL_IMAGES } from "../../Data/URLgetData";
 

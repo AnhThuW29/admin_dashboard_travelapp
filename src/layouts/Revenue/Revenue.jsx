@@ -1,6 +1,5 @@
 import React from "react";
 import SideBar from "../../components/sidebar/SideBar.jsx";
-import MainDash from "../../components/MainDash/MainDash.jsx";
 import Table from "../../components/Table/Table";
 import "./Revenue.css";
 
