@@ -21,6 +21,8 @@ import useToken from "./useToken";
 import AddNV from "layouts/AddNV/AddNV";
 import NhanVien from "layouts/NhanVien/NhanVien";
 import SingleNV from "layouts/NhanVien/SingleNV";
+import ChinhSuaTour from "layouts/Post/ChinhSuaTour";
+import ThemTour from "layouts/Post/ThemTour";
 
 function App() {
     const [token, setToken] = useState("");
@@ -32,6 +34,8 @@ function App() {
 
     if (!token) {
         return <Test setToken={setToken} />;
+    } else{
+        console.log("ERR APP.js");
     }
 
     return (
@@ -55,6 +59,8 @@ function App() {
                     <Route path="tour">
                         <Route index element={<Tour />} />
                         <Route path=":postId" element={<Post />} />
+                        <Route path="update:ID" element={<ChinhSuaTour />} />
+                        <Route path="ThemTour" element={<ThemTour />} />
                     </Route>
                     {/* <Route path="login">
                         <Route index element={<Test />} />

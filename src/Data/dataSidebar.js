@@ -17,21 +17,21 @@ export const dataSidebar = [
         icon: UilEstate,
         heading: "Tổng quan",
     },
-    {
-        route: "/nhanvien",
-        icon: UilUsersAlt,
-        heading: "Nhân viên",
-    },
-    {
-        route: "/client",
-        icon: UilUsersAlt,
-        heading: "Khách hàng",
-    },
-    {
-        route: "/partner",
-        icon: UilUsersAlt,
-        heading: "Đối tác",
-    },
+    // {
+    //     route: "/nhanvien",
+    //     icon: UilUsersAlt,
+    //     heading: "Nhân viên",
+    // },
+    // {
+    //     route: "/client",
+    //     icon: UilUsersAlt,
+    //     heading: "Khách hàng",
+    // },
+    // {
+    //     route: "/partner",
+    //     icon: UilUsersAlt,
+    //     heading: "Đối tác",
+    // },
     {
         route: "/tour",
         icon: UilUmbrella,
@@ -46,7 +46,7 @@ export const dataSidebar = [
 
 export const dataCard = [
     {
-        title: "Khách hàng",
+        title: "Doanh thu 7 ngày qua",
         color: {
             backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
             boxShadow: "0px 10px 20px 0px #e0c6f5",
@@ -61,26 +61,26 @@ export const dataCard = [
             },
         ],
     },
+    // {
+    //     title: "Đối tác",
+    //     color: {
+    //         backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
+    //         boxShadow: "0px 10px 20px 0px #e0c6f5",
+    //     },
+    //     barValue: 70,
+    //     value: 20,
+    //     png: UilUsersAlt,
+    //     series: [
+    //         {
+    //             name: "Đối tác",
+    //             data: [20, 40, 60, 80, 100],
+    //         },
+    //     ],
+    // },
     {
-        title: "Đối tác",
+        title: "Doanh Thu Hôm nay",
         color: {
-            backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
-            boxShadow: "0px 10px 20px 0px #e0c6f5",
-        },
-        barValue: 70,
-        value: 20,
-        png: UilUsersAlt,
-        series: [
-            {
-                name: "Đối tác",
-                data: [20, 40, 60, 80, 100],
-            },
-        ],
-    },
-    {
-        title: "Tour hot nhất",
-        color: {
-            backGround: "linear-gradient(180deg, #FF919D 0%, #FC929D 100%)",
+            backGround: "linear-gradient(180deg, #FF919D 0%, #FC929D 50%)",
             boxShadow: "0px 10px 20px 0px #FDC0C7",
         },
         barValue: 70,

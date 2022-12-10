@@ -1,35 +1,59 @@
-import React, { useState } from 'react'
-import { motion, AnimateSharedLayout } from 'framer-motion'
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-import './Card.css'
-import { UilTimes } from '@iconscout/react-unicons'
-import Chart from 'react-apexcharts'
+import React, { useEffect, useState } from "react";
+import { motion, AnimateSharedLayout } from "framer-motion";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import "./Card.css";
+import { UilTimes } from "@iconscout/react-unicons";
+import Chart from "react-apexcharts";
+import axios from "axios";
 const Card = (props) => {
-
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <AnimateSharedLayout>
-      {
-        expanded ?
-          <ExpandedCard param={props} setExpanded={() => setExpanded(false)} /> :
-          <PercentCard param={props} setExpanded={() => setExpanded(true)} />
-      }
+      {expanded ? (
+        <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
+      ) : (
+        <PercentCard param={props} setExpanded={() => setExpanded(true)} />
+      )}
     </AnimateSharedLayout>
-
-  )
-}
+  );
+};
 
 function PercentCard({ param, setExpanded }) {
+  const Png = param.png;
 
-  const Png = param.png
+  // const [doanhThuHomNay, setDoanhThuHomNay] = useState();
+  // const userData = JSON.parse(localStorage.getItem("userData"));
+  // const d = new Date();
+  // const dateNow = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+
+  // useEffect(() => {
+  //   const get = async () => {
+  //     await axios
+  //       .post(
+  //         "http://localhost:9000/v1/thongke/thongkeall/" +
+  //           userData.id,
+  //         { Ngay: dateNow }
+  //       )
+  //       .then((res) => {
+  //         setDoanhThuHomNay(res.data.tkNow);
+  //       })
+  //       .catch((err) => {
+  //         console.log("ERR: ", err);
+  //       });
+  //   };
+  //   get();
+  // });
+  
+  
 
   return (
-    <motion.div className="percentCard"
+    <motion.div
+      className="percentCard"
       style={{
         background: param.color.backGround,
-        boxShadow: param.color.boxShadow
+        boxShadow: param.color.boxShadow,
       }}
       layoutId="expandableCard"
       onClick={setExpanded}
@@ -43,15 +67,13 @@ function PercentCard({ param, setExpanded }) {
       </div>
       <div className="detail">
         <Png />
-        <span>${param.value}</span>
-        <span>24 giờ trước</span>
+        <span> {param.doanhthu} $</span>
       </div>
     </motion.div>
-  )
+  );
 }
 
 function ExpandedCard({ param, setExpanded }) {
-
   const data = {
     options: {
       chart: {
@@ -104,25 +126,25 @@ function ExpandedCard({ param, setExpanded }) {
   };
 
   return (
-    <motion.div className="expandedCard"
+    <motion.div
+      className="expandedCard"
       style={{
         background: param.color.backGround,
-        boxShadow: param.color.boxShadow
+        boxShadow: param.color.boxShadow,
       }}
       layoutId="expandableCard"
     >
-
       <div>
         <UilTimes onClick={setExpanded} />
       </div>
 
       <span>{param.title}</span>
       <div className="chartContainer">
-        <Chart series={param.series} type='area' options={data.options} />
+        <Chart series={param.series} type="area" options={data.options} />
       </div>
       <span>24 giờ trước</span>
     </motion.div>
-  )
+  );
 }
 
-export default Card
+export default Card;
