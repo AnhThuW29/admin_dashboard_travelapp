@@ -19,7 +19,7 @@ const Cards = () => {
           { Ngay: dateNow }
         )
         .then((res) => {
-          setDoanhThu(res.data);
+          setDoanhThu([res.data.TongBayNgay, res.data.TongHomNay]);
         })
         .catch((err) => {
           console.log("ERR: ", err);

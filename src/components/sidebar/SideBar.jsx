@@ -72,15 +72,15 @@ const SideBar = () => {
                         <UilMoon />
                     </div> */}
 
-          <div
-            className="menuItem"
-            style={{ color: "black" }}
-            
-          >
-            {/* <div onClick={localStorage.removeItem("userData")}> */}
-                <UilSignOutAlt />
-            {/* </div> */}
-            
+          <div className="menuItem" style={{ color: "black" }}>
+            <div
+              onClick={() => {
+                localStorage.removeItem("userData");
+                window.location.replace("/");
+              }}
+            >
+              <UilSignOutAlt />
+            </div>
           </div>
         </div>
       </motion.div>

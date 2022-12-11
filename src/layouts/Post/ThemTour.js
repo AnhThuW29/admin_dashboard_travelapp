@@ -38,7 +38,7 @@ const ThemTour = () => {
     }, []);
 
     const handleSubmit = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         console.log(data);
         await axios
             .post("http://localhost:9000/v1/tour/add", data, {

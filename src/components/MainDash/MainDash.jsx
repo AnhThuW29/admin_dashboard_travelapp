@@ -4,7 +4,7 @@ import Cards from "../Cards/Cards.jsx";
 import Table from "../Table/Table.jsx";
 const MainDash = () => {
     return (
-        <div>
+        <div style={{overflow: "auto"}}>
             <h1
                 style={{
                     marginTop: "4rem",
@@ -14,7 +14,7 @@ const MainDash = () => {
             >
                 Dashboard
             </h1>
-            <div className="MainDash">
+            <div className="MainDash"  >
                 <Cards />
                 <Table />
             </div>
