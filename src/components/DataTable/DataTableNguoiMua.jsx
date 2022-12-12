@@ -20,7 +20,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const DataTable2 = () => {
+const DataTableNguoiMua = () => {
   // const [data, setData] = useState(userRows)
 
   const [users, setUsers] = useState([]);
@@ -40,7 +40,7 @@ const DataTable2 = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        await axiosClient.get("/v1/nguoidung/getallban").then((res) => {
+        await axiosClient.get("/v1/nguoidung/getallmua").then((res) => {
           setUsers(res.data);
         });
       } catch (error) {
@@ -115,7 +115,7 @@ const DataTable2 = () => {
                   "http://localhost:9000/v1/nguoidung/delete/" + idNV
                 );
                 setUsers(users.filter((item) => item.id !== idNV));
-                window.location.replace("/partner");
+                window.location.replace("/client");
               }}
             >
               Xóa
@@ -127,4 +127,4 @@ const DataTable2 = () => {
   );
 };
 
-export default DataTable2;
+export default DataTableNguoiMua;

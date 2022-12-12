@@ -2,27 +2,86 @@ import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import image from "../src/imgs/orangeLogo.png";
 import axios from "axios";
+import {
+  Alert,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Slide,
+} from "@mui/material";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function Test(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const url = new URL(window.location);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email !== "" && password !== "") {
-      await axios.post
-        ("http://localhost:9000/v1/nguoidung/dangnhap", {
-          Email: "duong@gmail.com",
-          MatKhau: "abc123456",
+      await axios
+        .post("http://localhost:9000/v1/nguoidung/dangnhap", {
+          // Email: "duong@gmail.com",
+          // MatKhau: "abc123456",
+          Email: email,
+          MatKhau: password,
         })
-        .then((response) => {
-          if (response.data !== "") {
+        .then(async (response) => {
+          console.log(response.data);
+          if (
+            response.data.stateLogin != "NoUser" &&
+            response.data.stateLogin != "NoPassword" &&
+            response.data.Quyen != "MUA"
+          ) {
             localStorage.setItem("userData", JSON.stringify(response.data));
             console.log("userData", response.data);
             props.setToken(response.data);
-            window.location.replace("/");
+            if (response.data.Quyen == "BAN") window.location.replace("/");
+            else handleClickOpen();
           } else {
-            console.log("login failed");
+            await axios
+              .post("http://localhost:9000/v1/nhanvien/dangnhap", {
+                // Email: "duong@gmail.com",
+                // MatKhau: "abc123456",
+                Email: email,
+                MatKhau: password,
+              })
+              .then((response) => {
+                console.log(response.data);
+                if (
+                  response.data.stateLogin != "NoUserNV" &&
+                  response.data.stateLogin != "NoPasswordNV"
+                ) {
+                  localStorage.setItem(
+                    "userData",
+                    JSON.stringify(response.data)
+                  );
+                  console.log("userData", response.data);
+                  props.setToken(response.data);
+                  window.location.replace("/nhanvien");
+                } else {
+                  handleClickOpen();
+                }
+              })
+              .catch((err) => {
+                console.log("abc: ", err);
+              });
           }
         })
         .catch((err) => {
@@ -129,6 +188,28 @@ export default function Test(props) {
                 </span>
                 Đăng nhập
               </button>
+              <div>
+                <Dialog
+                  open={open}
+                  TransitionComponent={Transition}
+                  keepMounted
+                  onClose={handleClose}
+                  aria-describedby="alert-dialog-slide-description"
+                >
+                  <DialogTitle>{"Thông tin đăng nhập sai!"}</DialogTitle>
+                  <DialogActions>
+                    {/* <Button onClick={handleClose}>Hủy</Button> */}
+                    <Button
+                      onClick={async () => {
+                        handleClose();
+
+                      }}
+                    >
+                      Đóng
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </div>
             </div>
           </form>
         </div>

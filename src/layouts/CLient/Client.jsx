@@ -3,6 +3,7 @@ import SideBar from "../../components/sidebar/SideBar.jsx";
 import RightSide from "../../components/RightSide/RightSide.jsx";
 import DataTable from "../../components/DataTable/DataTable.jsx";
 import "./Client.css";
+import DataTableNguoiMua from "components/DataTable/DataTableNguoiMua.jsx";
 
 const Client = () => {
     return (
@@ -19,9 +20,8 @@ const Client = () => {
                     >
                         Khách hàng
                     </h3>
-                    <DataTable />
+                    <DataTableNguoiMua />
                 </div>
-                <RightSide />
             </div>
         </div>
     );

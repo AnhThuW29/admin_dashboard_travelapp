@@ -8,10 +8,24 @@ import {
   getDistrictName,
   getCommuneName,
 } from "vn-ad";
+import {
+  Alert,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Slide,
+} from "@mui/material";
 import axiosClient from "Data/client.js";
 import { useTabs } from "@mui/base";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const ChinhSuaTour = () => {
   let id = useParams();
@@ -31,17 +45,21 @@ const ChinhSuaTour = () => {
     getUser(id.ID);
   }, []);
 
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    handleClickOpen();
+
     console.log(data);
-    await axios
-      .put("http://localhost:9000/v1/tour/update", data)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log("SAI: ", err);
-      });
   };
   return (
     <div className="App">
@@ -229,6 +247,41 @@ const ChinhSuaTour = () => {
                       >
                         Lưu
                       </button>
+                      <div>
+                        <Dialog
+                          open={open}
+                          TransitionComponent={Transition}
+                          keepMounted
+                          onClose={handleClose}
+                          aria-describedby="alert-dialog-slide-description"
+                        >
+                          <DialogTitle>
+                            {"Chỉnh sửa thành công."}
+                          </DialogTitle>
+                          <DialogActions>
+                            {/* <Button onClick={handleClose}>Hủy</Button> */}
+                            <Button
+                              onClick={async () => {
+                                handleClose();
+                                await axios
+                                  .put(
+                                    "http://localhost:9000/v1/tour/update",
+                                    data
+                                  )
+                                  .then((res) => {
+                                    console.log(res.data);
+                                  })
+                                  .catch((err) => {
+                                    console.log("SAI: ", err);
+                                  });
+                                window.location.replace("/tour");
+                              }}
+                            >
+                              Đóng
+                            </Button>
+                          </DialogActions>
+                        </Dialog>
+                      </div>
                     </div>
                   </div>
                 </form>

@@ -5,10 +5,36 @@ import axiosClient from "../../Data/client";
 
 import { Link, useParams } from "react-router-dom";
 import { URL_IMAGES } from "../../Data/URLgetData";
+import { WindowIcon } from "@heroicons/react/20/solid";
+import {
+  Alert,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Slide,
+} from "@mui/material";
+import axios from "axios";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const Post = () => {
   let id = useParams();
   const [data, setData] = useState({});
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     const getUser = async (id) => {
@@ -65,13 +91,39 @@ const Post = () => {
                     borderWidth: 10,
                     //   fontSize: "20px",
                   }}
-                  onClick={()=> {
-                    console.log("H######");
+                  onClick={() => {
+                    console.log("id: ", id.postId);
+                    handleClickOpen();
+                    // window.location.replace("/");
                   }}
                 >
                   Xóa Tour
                 </h3>
               </div>
+            </div>
+
+            <div>
+              <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
+              >
+                <DialogTitle>{"Bạn thật sự muốn xóa tour này?"}</DialogTitle>
+                <DialogActions>
+                  <Button onClick={handleClose}>Hủy</Button>
+                  <Button
+                    onClick={async () => {
+                      handleClose();
+                      await axios.delete("http://localhost:9000/v1/tour/delete/" + id.postId)
+                      window.location.replace("/tour");
+                    }}
+                  >
+                    Xóa Tour
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </div>
 
             <div className="row-span-3 ">

@@ -12,9 +12,9 @@ const Card = (props) => {
   return (
     <AnimateSharedLayout>
       {expanded ? (
-        <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
+        <ExpandedCard param={props}  />
       ) : (
-        <PercentCard param={props} setExpanded={() => setExpanded(true)} />
+        <PercentCard param={props}  />
       )}
     </AnimateSharedLayout>
   );
@@ -23,28 +23,6 @@ const Card = (props) => {
 function PercentCard({ param, setExpanded }) {
   const Png = param.png;
 
-  // const [doanhThuHomNay, setDoanhThuHomNay] = useState();
-  // const userData = JSON.parse(localStorage.getItem("userData"));
-  // const d = new Date();
-  // const dateNow = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
-
-  // useEffect(() => {
-  //   const get = async () => {
-  //     await axios
-  //       .post(
-  //         "http://localhost:9000/v1/thongke/thongkeall/" +
-  //           userData.id,
-  //         { Ngay: dateNow }
-  //       )
-  //       .then((res) => {
-  //         setDoanhThuHomNay(res.data.tkNow);
-  //       })
-  //       .catch((err) => {
-  //         console.log("ERR: ", err);
-  //       });
-  //   };
-  //   get();
-  // });
   
   
 

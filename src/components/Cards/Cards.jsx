@@ -14,11 +14,12 @@ const Cards = () => {
     const get = async () => {
       await axios
         .post(
-          "http://localhost:9000/v1/thongke/thongkeall/" +
+          "http://localhost:9000/v1/thongke/thongkeallchutour/" +
             userData.id,
           { Ngay: dateNow }
         )
         .then((res) => {
+          console.log(res.data);
           setDoanhThu([res.data.TongBayNgay, res.data.TongHomNay]);
         })
         .catch((err) => {

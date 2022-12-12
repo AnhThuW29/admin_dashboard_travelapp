@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SideBar.css";
 import Logo from "../../imgs/logo.png";
-import { dataSidebar } from "../../Data/dataSidebar";
+import { dataSidebar, dataSidebar2 } from "../../Data/dataSidebar";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
 import { UilBars, UilMoon } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
@@ -11,6 +11,7 @@ import { color } from "@mui/system";
 const SideBar = () => {
   const [selected, setSelected] = useState(0);
   const [expanded, setExpaned] = useState(true);
+  const userData = JSON.parse(localStorage.getItem("userData"));
 
   const sidebarVariants = {
     true: {
@@ -47,7 +48,8 @@ const SideBar = () => {
         </Link>
         {/* menu */}
         <div className="menu">
-          {dataSidebar.map((item, index) => {
+          {userData.Quyen == "BAN" ?
+          dataSidebar2.map((item, index) => {
             return (
               <div
                 className="menuItem"
@@ -66,7 +68,28 @@ const SideBar = () => {
                 {/* <span className='counter'>1</span> */}
               </div>
             );
-          })}
+          }):
+          dataSidebar.map((item, index) => {
+            return (
+              <div
+                className="menuItem"
+                style={{ marginLeft: 0 }}
+                key={index}
+                onClick={() => setSelected(index)}
+              >
+                <Link
+                  to={item.route}
+                  style={{ textDecoration: "none" }}
+                  className="menuItem active"
+                >
+                  <item.icon />
+                  <span>{item.heading}</span>
+                </Link>
+                {/* <span className='counter'>1</span> */}
+              </div>
+            );
+          })
+        }
 
           {/* <div className="menuItem" style={{ color: 'black' }}>
                         <UilMoon />

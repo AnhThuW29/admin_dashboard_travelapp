@@ -11,6 +11,20 @@ import {
 import "./AddNV.css";
 import axiosClient from "Data/client.js";
 import { useTabs } from "@mui/base";
+import axios from "axios";
+import {
+  Alert,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Slide,
+} from "@mui/material";
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const AddNV = () => {
   const [hoten, setHoten] = useState();
@@ -24,6 +38,16 @@ const AddNV = () => {
   const [huyen, setHuyen] = useState();
   const [xa, setXa] = useState();
   const [matKhau, setMatKhau] = useState("abc123456");
+  const [quyen, setQuyen] = useState();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,42 +68,22 @@ const AddNV = () => {
         },
       ],
       MatKhau: matKhau,
-      Quyen: "NhanVien",
+      Quyen: quyen,
     };
 
-    const user = {
-      HoTen: hoten,
-      NgaySinh: ngaySinh,
-      SDT: SDT,
-      DiaChi: {
-        TenDiaChi: "Home",
-        TinhTP: getProvinceName(tinh),
-        QuanHuyen: getDistrictName(huyen),
-        XaPhuong: getCommuneName(xa),
-        ChiTiet: diachi
-      },
-      GioiTinh: gioiTinh,
-      CMND: cmnd,
-      Email: email,
-      MatKhau: matKhau,
-      Quyen: "NhanVien",
-    };
-
-    // const postNV = await axiosClient.post("/v1/nhanvien/add", data)
-
-    await axiosClient
-      .post("/v1/nhanvien/add", user)
+    // console.log(data);
+    await axios
+      .post("http://localhost:9000/v1/nhanvien/add", data)
       .then((res) => {
         console.log(res.data);
+        if (res.status == 200) handleClickOpen();
         console.log("NNNNNN", data);
       })
       .catch((err) => {
         console.log(err);
       });
 
-    // if (postNV.status === 200) {
-    //   console.log(postNV.data);
-    // } else console.log("Sai");
+
   };
 
   return (
@@ -133,23 +137,6 @@ const AddNV = () => {
 
                         <div className="col-span-6 sm:col-span-3">
                           <label
-                            htmlFor="last-name"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Giới tính
-                          </label>
-                          <input
-                            value={gioiTinh}
-                            onChange={(e) => setGioiTinh(e.target.value)}
-                            type="text"
-                            name="last-name"
-                            id="last-name"
-                            autoComplete="family-name"
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400 sm:text-sm"
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <label
                             htmlFor="email-address"
                             className="block text-sm font-medium text-gray-700"
                           >
@@ -200,7 +187,7 @@ const AddNV = () => {
                           />
                         </div>
 
-                        <div className="col-span-6 sm:col-span-3">
+                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                           <label
                             htmlFor="email-address"
                             className="block text-sm font-medium text-gray-700"
@@ -216,6 +203,40 @@ const AddNV = () => {
                             autoComplete="Email"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400 sm:text-sm"
                           />
+                        </div>
+
+                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                          <label
+                            htmlFor="last-name"
+                            className="block text-sm font-medium text-gray-700"
+                          >
+                            Giới tính
+                          </label>
+                          <select
+                            value={gioiTinh}
+                            onChange={(e) => setGioiTinh(e.target.value)}
+                          >
+                            <option value="">Chọn Giới tính </option>
+                            <option value={"NAM"}>Nam</option>
+                            <option value={"NU"}>Nữ</option>
+                          </select>
+                        </div>
+
+                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                          <label
+                            htmlFor="last-name"
+                            className="block text-sm font-medium text-gray-700"
+                          >
+                            Quyền
+                          </label>
+                          <select
+                            value={quyen}
+                            onChange={(e) => setQuyen(e.target.value)}
+                          >
+                            <option value="">Chọn Quyền </option>
+                            <option value={"NHANVIEN"}>Nhân Viên</option>
+                            <option value={"QUANLY"}>Quản Lý</option>
+                          </select>
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -300,6 +321,31 @@ const AddNV = () => {
                       >
                         Lưu
                       </button>
+                    </div>
+
+                    <div>
+                      <Dialog
+                        open={open}
+                        TransitionComponent={Transition}
+                        keepMounted
+                        onClose={handleClose}
+                        aria-describedby="alert-dialog-slide-description"
+                      >
+                        <DialogTitle>
+                          {"Thêm nhân viên mới thành công."}
+                        </DialogTitle>
+                        <DialogActions>
+                          <Button
+                            onClick={async () => {
+                              handleClose();
+
+                              window.location.replace("/nhanvien");
+                            }}
+                          >
+                            Đóng
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
                     </div>
                   </div>
                 </form>
