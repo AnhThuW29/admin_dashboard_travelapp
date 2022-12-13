@@ -34,6 +34,7 @@ const SingleNV = () => {
               <div className="left">
                 <h1 className="title">Thông tin chi tiết</h1>
 
+
                 <div className="item">
                   
                   <div className="details">

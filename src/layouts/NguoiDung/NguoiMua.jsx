@@ -89,14 +89,14 @@ const NguoiMua = () => {
                                                 {data?.SDT}
                                             </span>
                                         </div>
-                                        <div className="detailItem">
+                                        {/* <div className="detailItem">
                                             <span className="itemKey">
                                                 CMND/CCCD:
                                             </span>
                                             <span className="itemValue">
                                                 {data?.CMND}
                                             </span>
-                                        </div>
+                                        </div> */}
                                         <div className="detailItem">
                                             <span className="itemKey">
                                                 Tên địa chỉ:
